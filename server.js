@@ -36,9 +36,9 @@ app.get('/', (req, res) => {
 // const uri = 'mongodb://localhost:27017/TravelDestinations';
 const uri = 'mongodb+srv://traveldestination:Traveldestination123@traveldestination.hcx2xmc.mongodb.net/TravelDestinations?retryWrites=true&w=majority';
 
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html")
-})
+// app.get("/", function (req, res) {
+//   res.sendFile(__dirname + "/index.html")
+// })
 
 async function connect() {
   try {
