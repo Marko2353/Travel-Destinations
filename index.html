@@ -10,13 +10,14 @@
 </head>
 
 <body>
-  <form method="post" action="/">
-    <input placeholder="Title" type="text" name="title">
-    <input placeholder="Location" type="text" name="location">
-    <input placeholder="Date From" type="date" name="dateFrom" id="">
-    <input placeholder="Date To" type="date" name="dateTo" id="">
-    <input placeholder="Description" type="text" name="description">
-    <input placeholder="Photo" type="type" name="photo">
+  <form id="destinationForm" method="post" action="/">
+    <input placeholder="Title" type="text" name="title" required>
+    <input placeholder="Location" type="text" name="location" required>
+    <input placeholder="Country" type="text" name="country" required>
+    <input placeholder="Date From" type="date" name="dateFrom" id="" required>
+    <input placeholder="Date To" type="date" name="dateTo" id="" required>
+    <input placeholder="Description" type="text" name="description" required>
+    <input placeholder="Photo" type="type" name="photo" required>
     <input type="submit" value="Add destination!">
   </form>
 </body>
