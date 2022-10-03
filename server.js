@@ -21,6 +21,18 @@ const destinationsSchema = {
   description: String,
   photo: String
 };
+// const destinationsSchema = {
+//   title: {
+//     type: String,
+//     required: "Title must be filled before creating a new destination!"
+//   },
+//   location: String,
+//   country: String,
+//   dateFrom: Date,
+//   dateTo: Date,
+//   description: String,
+//   photo: String
+// };
 
 const Destination = mongodb.model("destinations", destinationsSchema);
 
@@ -33,9 +45,9 @@ app.get('/', (req, res) => {
 })
 
 //IÑIGO-MONGODB
-const uri = 'mongodb+srv://traveldestination:Traveldestination123@cluster0.zi5cvyi.mongodb.net/?retryWrites=true&w=majority';
+// const uri = 'mongodb+srv://traveldestination:Traveldestination123@cluster0.zi5cvyi.mongodb.net/?retryWrites=true&w=majority';
 //
-//NIKO-MONGODB  const uri = 'mongodb+srv://traveldestination:Traveldestination123@traveldestination.hcx2xmc.mongodb.net/TravelDestinations?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://traveldestination:Traveldestination123@traveldestination.hcx2xmc.mongodb.net/TravelDestinations?retryWrites=true&w=majority';
 
 // app.get("/", function (req, res) {
 //   res.sendFile(__dirname + "/index.html")
