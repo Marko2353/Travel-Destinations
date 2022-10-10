@@ -4,13 +4,57 @@
 }
 
 body {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 0 0 0;
+  background-color: #cccccc;
+}
+
+header {
   width: 100vw;
-  height: 100vh;
-  padding: 0;
+  height: 60px;
+  background-color: rgb(224, 224, 224);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 2px 15px 1px rgb(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+header>a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  width: max-content;
+  padding: 8px 15px;
+}
+
+header>a:hover {
+  text-decoration: underline;
+}
+
+.home {
+  width: 100vw;
+  height: 100%;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 25px;
+  padding: 25px;
+  align-self: flex-start;
+}
+
+.home>div {
+  background-color: black;
+  width: 100%;
+  height: 350px;
 }
 
 form {
