@@ -1,5 +1,5 @@
 const express = require('express');
-const mongodb = require('mongoose');
+const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
@@ -34,7 +34,7 @@ const destinationsSchema = {
 //   photo: String
 // };
 
-const Destination = mongodb.model("destinations", destinationsSchema);
+const Destination = mongoose.model("destinations", destinationsSchema);
 
 app.get('/', (req, res) => {
   Destination.find({}, function (err, destinations) {
@@ -55,7 +55,7 @@ const uri = 'mongodb+srv://traveldestination:Traveldestination123@traveldestinat
 
 async function connect() {
   try {
-    await mongodb.connect(uri)
+    await mongoose.connect(uri)
     console.log("Connected to MongoDB!")
   } catch (error) {
     console.error(error);
