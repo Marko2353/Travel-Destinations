@@ -13,7 +13,7 @@
   <header>
     <a href="index.html">Home</a>
   </header>
-  <div class="containers">
+  <section class="containers">
     <div class="form-container">
       <form id="destinationForm" method="post" action="/">
         <input placeholder="Title" type="text" name="title" required>
@@ -27,22 +27,12 @@
         <input type="submit" value="Edit destination!">
       </form>
     </div>
-  </div>
 
-  <div class="area"><%destinationsList.forEach(destinations => {%>
-    <div class="container">
-      <h3><%=destinations.title%></h3>
-      <p><%=destinations._id%></p>
-      <p>Location: <%=destinations.location%></p>
-      <p>Country: <%=destinations.country%></p>
-      <p class="dateFrom">From: <%=destinations.dateFrom.toString().slice(0, 15)%></p>
-      <p class="dateTo">To: <%=destinations.dateTo.toString().slice(0, 15)%></p>
-      <p><%=destinations.description%></p>
-      <p><%=destinations.photo%></p>
 
+    <div class="area">
     </div>
-    <%})%>
-  </div>
+  </section>
+  <script src="create.js"></script>
 </body>
 
 </html>

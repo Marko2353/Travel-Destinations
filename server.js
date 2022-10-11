@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
+var database
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -33,11 +34,11 @@ const destinationsSchema = {
 
 const Destination = mongoose.model("destinations", destinationsSchema);
 
-app.get('/', (req, res) => {
-  Destination.find({}, function (err, destinations) {
-    res.render('index', {
-      destinationsList: destinations
-    })
+app.get('/api/destinations', (req, res) => {
+  Destination.find().then((result) => {
+    res.send(result)
+  }).catch((err) => {
+    console.log(err)
   })
 })
 
@@ -50,19 +51,12 @@ const uri = 'mongodb+srv://traveldestination:Traveldestination123@traveldestinat
 //   res.sendFile(__dirname + "/index.html")
 // })
 
-async function connect() {
-  try {
-    await mongoose.connect(uri)
-    console.log("Connected to MongoDB!")
-  } catch (error) {
-    console.error(error);
-  }
-}
 
-connect();
+
+let newDestination
 
 app.post("/", function (req, res) {
-  let newDestination = new Destination({
+  newDestination = new Destination({
     title: req.body.title,
     location: req.body.location,
     country: req.body.country,
@@ -75,6 +69,16 @@ app.post("/", function (req, res) {
   res.redirect('/');
 })
 
+
+
 app.listen(8000, () => {
+  mongoose.connect(uri, {
+    useNewUrlParser: true
+  }, (error, result) => {
+    if (error) throw error
+  })
+  console.log("Connected to MongoDB!")
   console.log("Server is running on port 8000!")
 });
+
+module.exports = Destination;
