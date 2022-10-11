@@ -66,7 +66,7 @@ app.post("/", function (req, res) {
     photo: req.body.photo
   });
   newDestination.save();
-  res.redirect('/');
+  res.redirect('/create.html');
 })
 
 
