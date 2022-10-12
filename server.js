@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
+const { Binary } = require('mongodb');
+const { maxHeaderSize } = require('http');
 var database
 
 app.use(bodyParser.urlencoded({
@@ -11,12 +13,34 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('public'));
 
 const destinationsSchema = {
-  title: String,
-  location: String,
-  country: String,
-  dateFrom: Date,
-  dateTo: Date,
-  description: String,
+  title: {
+  type: String,
+  message: "Title is required",
+  trim: true
+},
+  location: {
+  type: String,
+  message: "Location is required",
+  trim: true
+  },
+  country: { 
+  type: String,
+  message: "Country is required",
+  trim: true
+
+},
+  dateFrom: {
+  type: Date,
+},
+  dateTo: {
+  type: Date,
+  },
+
+  description: {
+  type: String,
+  message: "Description is required",
+  trim: true
+  },
   photo: String
 };
 // const destinationsSchema = {
