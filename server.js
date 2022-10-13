@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -67,7 +68,8 @@ app.get('/api/destinations', (req, res) => {
 })
 
 //IÑIGO-MONGODB
-// const uri = 'mongodb+srv://traveldestination:Traveldestination123@cluster0.zi5cvyi.mongodb.net/?retryWrites=true&w=majority';
+
+//const uri = "mongodb+srv://e-learning-admin:e-learning-admin@e-learning.mkhehw2.mongodb.net/e-learning";  
 //
 const uri = 'mongodb+srv://traveldestination:Traveldestination123@traveldestination.hcx2xmc.mongodb.net/TravelDestinations?retryWrites=true&w=majority';
 
@@ -93,7 +95,38 @@ app.post("/", function (req, res) {
   res.redirect('/create.html');
 })
 
+///update
+app.post("/update", (req, res) => {
+  //https://stackoverflow.com/questions/7267102/how-do-i-update-upsert-a-document-in-mongoose
 
+
+  var query = {'_id': '632ddfe8cc5a7f6a21782e45'};
+
+
+
+let title = req.body.title;
+let location = req.body.location;
+let country = req.body.country;
+let dateFrom = req.body.dateFrom;
+let dateTo = req.body.dateTo;
+let description = req.body.description;
+let photo = req.body.photo;
+
+
+
+/*if(title==="" && location==="" && country==="" && dateFrom==="" && dateTo==="" && description==="" && photo===""){
+  res.json({ 
+    status: "FAILED",
+    message: "You need to edit atleast one field"
+  })
+}
+else { */ //query es el id de lo que quiero editar
+  Destination.findOneAndUpdate(query, {title:title, location:location, country:country, dateFrom:dateFrom, dateTo: dateTo, description:description, photo: photo}, {upsert: true}, function(err, doc) {
+    if (err) return res.send(500, {error: err});
+    return res.send('Succesfully saved.');
+});
+//} 
+});
 
 app.listen(8000, () => {
   mongoose.connect(uri, {

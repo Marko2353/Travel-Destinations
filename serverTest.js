@@ -57,21 +57,6 @@ mongoose
   app.get("/", (req, res) => {
     res.render("index-edit");
   });
-/* create
-app.post("/", function (req, res) {
-  let newDestination = new Destination({
-    title: req.body.title,  
-    location: req.body.location,
-    country: req.body.country,
-    dateFrom: req.body.dateFrom,
-    dateTo: req.body.dateTo,
-    description: req.body.description,
-    photo: req.body.photo
-  });
-  newDestination.save();
-  res.redirect('/');
-})
-*/
 
 ///update
 app.post("/update", (req, res) => {
@@ -87,19 +72,11 @@ let description = req.body.description;
 let photo = req.body.photo;
 
 
-
-/*if(title==="" && location==="" && country==="" && dateFrom==="" && dateTo==="" && description==="" && photo===""){
-  res.json({ 
-    status: "FAILED",
-    message: "You need to edit atleast one field"
-  })
-}
-else { */ //query es el id de lo que quiero editar
   Destination.findOneAndUpdate(query, {title:title, location:location, country:country, dateFrom:dateFrom, dateTo: dateTo, description:description, photo: photo}, {upsert: true}, function(err, doc) {
     if (err) return res.send(500, {error: err});
     return res.send('Succesfully saved.');
 });
-//} 
+
 });
  
 
