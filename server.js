@@ -143,6 +143,43 @@ Destination.findByIdAndUpdate(idDestination, {title:title, location:location, co
 }
 else { */ //query es el id de lo que quiero editar
 
+/*app.delete('/delete', (req, res) => {
+
+let idDestination = req.body._id;
+
+  Destination.findByIdAndRemove(idDestination, (err) => {
+    if (err){
+      console.log(err)
+  }
+  else{
+      console.log("Deleted successfully");
+  }
+})
+});*/
+
+app.post("/delete", (req, res) => {
+  let id = req.body.id;
+  Destination.findByIdAndRemove(id, (err) => {
+
+      // check if query error
+      if (err) {
+          console.log(err);
+          return res.json({ success: false });
+      }
+      return res.send('Deleted successfully.');
+  });
+});
+
+/*app.get('/delete', function (req, res) {
+  let id = req.params.id;
+  Destination.findByIdAndRemove(id).then((destination) => {
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err.message);
+  })
+})*/
+
+
 app.listen(8000, () => {
   mongoose.connect(uri, {
     useNewUrlParser: true
