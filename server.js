@@ -143,11 +143,10 @@ Destination.findByIdAndUpdate(idDestination, {title:title, location:location, co
 }
 else { */ //query es el id de lo que quiero editar
 
+//Delete
 app.post("/delete", (req, res) => {
   let id = req.body.id;
   Destination.findByIdAndRemove(id, (err) => {
-
-      // check if query error
       if (err) {
           console.log(err);
           return res.json({ success: false });
