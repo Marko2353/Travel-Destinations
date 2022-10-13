@@ -1,15 +1,23 @@
-
 const express = require('express');
+//import { theid } from "./public/index.js";
+//const theid = require('./public/index.js');
 const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 const { Binary } = require('mongodb');
 const { maxHeaderSize } = require('http');
+const { json } = require('body-parser');
 var database
+
+
+
 
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+
+
 
 app.use(express.static('public'));
 
@@ -100,10 +108,9 @@ app.post("/update", (req, res) => {
   //https://stackoverflow.com/questions/7267102/how-do-i-update-upsert-a-document-in-mongoose
 
 
-  var query = {'_id': '632ddfe8cc5a7f6a21782e45'};
+let query = {'_id': '63458e616d9d53f19a574fb6'};
 
-
-
+let idDestination = req.body.id;
 let title = req.body.title;
 let location = req.body.location;
 let country = req.body.country;
@@ -114,6 +121,20 @@ let photo = req.body.photo;
 
 
 
+Destination.findByIdAndUpdate(idDestination, {title:title, location:location, country:country, dateFrom:dateFrom, dateTo: dateTo, description:description, photo: photo}, {upsert: true}, function(err, doc) {
+  if (err) return res.send(500, {error: err});
+  return res.send('Succesfully saved.');
+});
+//} 
+});
+/*
+
+  var newUser = "title" + i;
+  var newValue = "value" + i;
+  jsonObj.members.viewers[newUser] = newValue ;
+
+*/
+
 /*if(title==="" && location==="" && country==="" && dateFrom==="" && dateTo==="" && description==="" && photo===""){
   res.json({ 
     status: "FAILED",
@@ -121,12 +142,6 @@ let photo = req.body.photo;
   })
 }
 else { */ //query es el id de lo que quiero editar
-  Destination.findOneAndUpdate(query, {title:title, location:location, country:country, dateFrom:dateFrom, dateTo: dateTo, description:description, photo: photo}, {upsert: true}, function(err, doc) {
-    if (err) return res.send(500, {error: err});
-    return res.send('Succesfully saved.');
-});
-//} 
-});
 
 app.listen(8000, () => {
   mongoose.connect(uri, {

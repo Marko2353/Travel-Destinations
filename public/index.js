@@ -4,7 +4,7 @@ const homeDisplay = document.querySelector('.home');
 fetch('http://localhost:8000/api/destinations').then(response => {
     return response.json()
   })
-  .then(data => {
+  .then(data => { 
     data.map(element => {
       const destinationItem = `<div class="container">
       <h3><a href="index-edit.html">` + element.title + `</a></h3>
@@ -21,4 +21,4 @@ fetch('http://localhost:8000/api/destinations').then(response => {
   })
   .catch(err => console.log(err))
 
-
+  //export let theid =element._id;

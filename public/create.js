@@ -13,6 +13,7 @@ fetch('http://localhost:8000/api/destinations').then(response => {
       <p>` + element.dateTo.toString().slice(0, 10) + `</p>
       <p>` + element.description + `</p>
       <p>` + element.photo + `</p>
+      <p>` + element._id + `</p>
       </div>`
       areaDisplay.insertAdjacentHTML("beforeend", destinationItem);
     });
