@@ -10,18 +10,13 @@
     
     <div class="containers">
         <div class="form-container">
-          <form id="destinationForm" name="destinationForm" method="post" action="/update">
-            <label for="">INTRODUCE THE ID OF THE DESTINATION YOU WANT TO DELETE</label>
+          <form id="destinationForm" name="destinationForm" method="post" action="/delete">
+            <label for="">The ID of the Destination you want to delete:</label>
             <input placeholder="Id" type="text" name="id" id="id" ><br><br>
-            <input placeholder="Title" type="text" name="title" id="title" >
-            <input placeholder="Location" type="text" name="location" id="location" >
-            <input placeholder="Country" type="text" name="country" id="country">
-            <input placeholder="Date From" type="date" name="dateFrom" id="dateFrom" value="0000-00-00">
-            <input placeholder="Date To" type="date" name="dateTo" id="dateTo" value="0000-00-00">
-            <input placeholder="Description" type="text" name="description" id="description">
-            <input placeholder="Photo" type="type" name="photo" id="photo">
-            <input type="submit" value="Edit">
-            <input type="submit" value="Back">
+            <input type="submit" value="Delete">
+            <a href="index.html">
+            <input type="button" value="Back">
+            </a>
           </form>
 </body>
 </html>

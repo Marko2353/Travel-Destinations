@@ -143,26 +143,42 @@ Destination.findByIdAndUpdate(idDestination, {title:title, location:location, co
 }
 else { */ //query es el id de lo que quiero editar
 
-app.delete("/api/destinations", (req, res) => {
+/*app.delete('/delete', (req, res) => {
 
-let query = {'_id': '63458e616d9d53f19a574fb6'};
+let idDestination = req.body._id;
 
-let idDestination = req.body.id;
-let title = req.body.title;
-let location = req.body.location;
-let country = req.body.country;
-let dateFrom = req.body.dateFrom;
-let dateTo = req.body.dateTo;
-let description = req.body.description;
-let photo = req.body.photo;
+  Destination.findByIdAndRemove(idDestination, (err) => {
+    if (err){
+      console.log(err)
+  }
+  else{
+      console.log("Deleted successfully");
+  }
+})
+});*/
 
+app.post("/delete", (req, res) => {
+  let id = req.body.id;
+  Destination.findByIdAndRemove(id, (err) => {
 
-
-Destination.findByIdAndUpdate(idDestination, {title:title, location:location, country:country, dateFrom:dateFrom, dateTo: dateTo, description:description, photo: photo}, {upsert: true}, function(err, doc) {
-  if (err) return res.send(500, {error: err});
-  return res.send('Succesfully deleted.');
+      // check if query error
+      if (err) {
+          console.log(err);
+          return res.json({ success: false });
+      }
+      return res.send('Deleted successfully.');
+  });
 });
-});
+
+/*app.get('/delete', function (req, res) {
+  let id = req.params.id;
+  Destination.findByIdAndRemove(id).then((destination) => {
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err.message);
+  })
+})*/
+
 
 app.listen(8000, () => {
   mongoose.connect(uri, {
