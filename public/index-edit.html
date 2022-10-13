@@ -1,44 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit destination</title>
 </head>
-
 <body>
-  <div class="containers">
-    <div class="form-container">
-      <form id="destinationForm" method="post" action="/">
-        <input placeholder="Title" type="text" name="title" required>
-        <input placeholder="Location" type="text" name="location" required>
-        <input placeholder="Country" type="text" name="country" required>
-        <input placeholder="Date From" type="date" name="dateFrom" id="" required>
-        <input placeholder="Date To" type="date" name="dateTo" id="" required>
-        <input placeholder="Description" type="text" name="description" required>
-        <input placeholder="Photo" type="type" name="photo" required>
-        <input type="submit" value="Edit destination!">
-      </form>
-    </div>
-  </div>
-
-  <div class="area"><%destinationsList.forEach(destinations => {%>
-    <div class="container">
-      <h3><%=destinations.title%></h3>
-      <p><%=destinations._id%></p>
-      <p>Location: <%=destinations.location%></p>
-      <p>Country: <%=destinations.country%></p>
-      <p class="dateFrom">From: <%=destinations.dateFrom.toString().slice(0, 15)%></p>
-      <p class="dateTo">To: <%=destinations.dateTo.toString().slice(0, 15)%></p>
-      <p><%=destinations.description%></p>
-      <p><%=destinations.photo%></p>
-
-    </div>
-    <%})%>
-  </div>
+    <script src="../serverTest.js"></script>
+    <div class="containers">
+        <div class="form-container">
+          <form id="destinationForm" name="destinationForm" method="post" action="/update">
+            <input placeholder="Id" type="text" name="id" id="id" >
+            <input placeholder="Title" type="text" name="title" id="title" >
+            <input placeholder="Location" type="text" name="location" id="location" >
+            <input placeholder="Country" type="text" name="country" id="country">
+            <input placeholder="Date From" type="date" name="dateFrom" id="dateFrom" >
+            <input placeholder="Date To" type="date" name="dateTo" id="dateTo" >
+            <input placeholder="Description" type="text" name="description" id="description">
+            <input placeholder="Photo" type="type" name="photo" id="photo">
+            <input type="submit" value="Edit">
+            <input type="submit" value="Back">
+          </form>
 </body>
-
 </html>
