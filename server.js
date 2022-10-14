@@ -101,10 +101,6 @@ app.post("/", function (req, res) {
 
 ///update
 app.post("/update", (req, res) => {
-  //https://stackoverflow.com/questions/7267102/how-do-i-update-upsert-a-document-in-mongoose
-
-
-let query = {'_id': '63458e616d9d53f19a574fb6'};
 
 let idDestination = req.body.id;
 let title = req.body.title;
@@ -141,7 +137,7 @@ app.post("/delete", (req, res) => {
           console.log(err);
           return res.json({ success: false });
       }
-      return res.send('Deleted successfully.');
+      return res.redirect('/');
   });
 });
 
