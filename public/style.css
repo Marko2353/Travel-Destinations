@@ -90,6 +90,10 @@ input {
   margin-bottom: 15px;
   padding: 10px 5px;
 }
+button {
+  width: 100%;
+  padding: 10px 5px;
+}
 
 input:last-child {
   margin-bottom: 0;

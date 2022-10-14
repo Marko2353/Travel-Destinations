@@ -117,15 +117,16 @@ let photo = req.body.photo;
 
 
 if(title==="" && location==="" && country==="" && dateFrom==="" && dateTo==="" && description==="" && photo===""){
-      res.json({ 
-        status: "FAILED",
-        message: "You need to edit atleast one field. "
+  res.json({ 
+    status: "FAILED",
+    message: "You need to edit atleast one field"
   })
 }
 else {
 Destination.findByIdAndUpdate(idDestination, {title:title, location:location, country:country, dateFrom:dateFrom, dateTo: dateTo, description:description, photo: photo}, {upsert: true}, function(err, doc) {
   if (err) return res.send(500, {error: err});
   return res.redirect('/');
+  
 
     
 });

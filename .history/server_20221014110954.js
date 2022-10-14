@@ -117,9 +117,9 @@ let photo = req.body.photo;
 
 
 if(title==="" && location==="" && country==="" && dateFrom==="" && dateTo==="" && description==="" && photo===""){
-      res.json({ 
-        status: "FAILED",
-        message: "You need to edit atleast one field. "
+  res.json({ 
+    status: "FAILED",
+    message: "You need to edit atleast one field"
   })
 }
 else {
