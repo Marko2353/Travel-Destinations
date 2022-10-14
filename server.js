@@ -133,6 +133,18 @@ Destination.findByIdAndUpdate(idDestination, {title:title, location:location, co
 });
 
 
+//Delete
+app.post("/delete", (req, res) => {
+  let id = req.body.id;
+  Destination.findByIdAndRemove(id, (err) => {
+      if (err) {
+          console.log(err);
+          return res.json({ success: false });
+      }
+      return res.send('Deleted successfully.');
+  });
+});
+
 app.listen(8000, () => {
   mongoose.connect(uri, {
     useNewUrlParser: true
